@@ -3,6 +3,8 @@ const card = document.querySelector(".card");
 const weatherDetails = document.querySelector(".details");
 const timeIndicator = document.querySelector("img.time");
 const weatherIcon = document.querySelector(".icon img");
+const forecast = new Forecast();
+
 
 const updateUI = (data) => {
   const { cityDetails, weatherForecast } = data;
@@ -29,8 +31,8 @@ const updateUI = (data) => {
 };
 
 const updateCityWeather = async (city) => {
-  const cityDetails = await getCity(city);
-  const weatherForecast = await getWeather(cityDetails.Key);
+  const cityDetails = await forecast.getCity(city);
+  const weatherForecast = await forecast.getWeather(cityDetails.Key);
 
   return { cityDetails, weatherForecast };
 };
